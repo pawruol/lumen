@@ -1,0 +1,2 @@
+// START QUEUE
+php artisan queue:work
