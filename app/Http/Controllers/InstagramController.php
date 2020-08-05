@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Jobs\InstagramGetAccountFollowersJob;
-use App\Jobs\InstagramGetAccountFollowingsJob;
+use App\Jobs\InstagramGetAccountFollowersJob;
 
 use Illuminate\Support\Facades\Auth;
 

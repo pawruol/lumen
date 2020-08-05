@@ -1,2 +1,11 @@
-// START QUEUE
+= LUMEN
+// Run queue worker
 php artisan queue:work
+
+= GIT
+// Add uncommited files to git
+git add .
+// Create commit with message
+git commit -m "commit message"
+// Push commit changes to remote
+git push -u origin master
