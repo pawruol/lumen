@@ -26,21 +26,29 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     // Matches "/api/profile
     $router->get('user', 'UserController@profile');
     // Matches "/api/users/1 
-    //get one user by id
     $router->get('users/{id}', 'UserController@singleUser');
     // Matches "/api/users
     $router->get('users', 'UserController@allUsers');
 
 
-    // Matches "/api/userAllAccounts
-    $router->get('user/accounts', 'UserController@userAllAccounts');
-    // Matches "/api/userSingleAccount/1 
-    $router->get('user/accounts/{id}', 'UserController@userSingleAccount');
+    // Matches "/api/user/accounts
+    $router->get('user/accounts', 'UserController@allUserAccounts');
+    // Matches "/api/user/accounts/1 
+    $router->get('user/accounts/{id}', 'UserController@singleUserAccount');
+    // Matches "/api/user/accounts 
+    $router->post('user/accounts', 'UserController@storeUserAccount');
+
+    
+    // Matches "/api/workers
+    $router->get('workers', 'WorkerController@allWorkers');
+    // Matches "/api/worker/1 
+    $router->get('workers/{id}', 'WorkerController@singleWorker');
+    // Matches "/api/user/accounts/1/workers
+    $router->get('user/accounts/{id}/workers', 'WorkerController@allUserAccountWorkers');
 
 
     // Matches "/api/instagram
-    $router->post('instagram/getAccountFollowers', 'InstagramController@getAccountFollowers');
-    $router->post('instagram/getAccountFollowings', 'InstagramController@getAccountFollowings');
+    $router->post('instagram/get-account-followers', 'InstagramController@getAccountFollowers');
+    $router->post('instagram/get-account-followings', 'InstagramController@getAccountFollowings');
 
-    $router->post('storeUserAccount', 'UserController@storeUserAccount');
 });

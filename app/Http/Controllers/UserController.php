@@ -64,7 +64,7 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function userAllAccounts()
+    public function allUserAccounts()
     {
          return response()->json(['userAccounts' =>  User::find(Auth::id())->userAccounts], 200);
     }
@@ -74,7 +74,7 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function userSingleAccount($id)
+    public function singleUserAccount($id)
     {
         try {
             $userAccount = UserAccount::findOrFail($id);
@@ -87,29 +87,32 @@ class UserController extends Controller
         }
 
     }
+
+    /**
+     * Store a new user account.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
     public function storeUserAccount(Request $request)
     {
         //validate incoming request 
         $this->validate($request, [
             'type' => 'required|string',
             'username' => 'required|string',
-            'user_id' => 'required|integer',
             'password' => 'required|string',
         ]);
 
         try {
-
             $userAccount = new UserAccount;
             $userAccount->username = $request->input('username');
             $userAccount->type = $request->input('type');
             $userAccount->password = $request->input('password');
-            $userAccount->user_id = $request->input('user_id');
-
+            $userAccount->user_id = Auth::id();
             $userAccount->save();
 
             //return successful response
             return response()->json(['userAccount' => $userAccount, 'message' => 'User account stored!'], 201);
-
         } catch (\Exception $e) {
             //return error message
             return response()->json(['message' => 'User account stored failed!'], 409);

@@ -5,14 +5,19 @@ namespace App\Jobs;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\File;
+
+use App\UserAccount;
+use App\Worker;
 
 use Phpfastcache\Helper\Psr16Adapter;
 
 class InstagramGetAccountFollowingsJob extends Job implements ShouldQueue
 {
-    protected $userUsername;
-    protected $userPassword;
     protected $psr16Adapter;
+
+    protected Worker $worker;
+    protected UserAccount $userAccount;
 
     protected $accountUsername;
 
@@ -21,10 +26,17 @@ class InstagramGetAccountFollowingsJob extends Job implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($userUsername, $userPassword, $accountUsername)
+    public function __construct($userAccount, $accountUsername)
     {
-        $this->userUsername = $userUsername;
-        $this->userPassword = $userPassword;
+        $this->userAccount = UserAccount::findOrFail($userAccount);
+
+        $this->worker = new Worker;
+        $this->worker->job = "getAccountFollowings";
+        $this->worker->status = "starting";
+        $this->worker->progress = 0;
+        $this->worker->user_account_id = $this->userAccount->id;
+        $this->worker->save();
+
         $this->accountUsername = $accountUsername;
 
         $this->psr16Adapter = new Psr16Adapter('Files');
@@ -37,7 +49,10 @@ class InstagramGetAccountFollowingsJob extends Job implements ShouldQueue
      */
     public function handle()
     {
-        $instagram = \InstagramScraper\Instagram::withCredentials($this->userUsername, $this->userPassword, $this->psr16Adapter);
+        $this->worker->status = "working";
+        $this->worker->update();
+
+        $instagram = \InstagramScraper\Instagram::withCredentials($this->userAccount->username, $this->userAccount->password, $this->psr16Adapter);
         $instagram->login();
         sleep(2);
 
@@ -46,7 +61,16 @@ class InstagramGetAccountFollowingsJob extends Job implements ShouldQueue
         sleep(1);
         $followings = $instagram->getFollowing($account->getId(), 100, 100, true);
 
-        info(json_encode($followings, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
-        return true;
+        $filename = 'worker_result_' . uniqid() . '.json';
+        $url = 'uploads/worker_results/' . $filename;
+        $path = 'uploads' . DIRECTORY_SEPARATOR . 'worker_results' . DIRECTORY_SEPARATOR;
+        $destinationPath = 'public' . DIRECTORY_SEPARATOR . $path;
+        File::makeDirectory($destinationPath, 0777, true, true);
+        File::put($destinationPath . $filename, json_encode($followings, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+
+        $this->worker->status = "finished";
+        $this->worker->result = $url;
+        $this->worker->progress = 100;
+        $this->worker->update();
     }
 }

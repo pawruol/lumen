@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\UserAccount;
+use App\Worker;
 use App\Jobs\InstagramGetAccountFollowersJob;
 use App\Jobs\InstagramGetAccountFollowingsJob;
 
@@ -33,14 +34,11 @@ class InstagramController extends Controller
             'username' => 'required|string',
             'userAccount' => 'required|integer',
         ]);
-
-        $userAccount = UserAccount::findOrFail($request->userAccount);
-
-        $userUsername = $userAccount->username;
-        $userPassword = $userAccount->password;
+        
+        $userAccount = $request->userAccount;
         $accountUsername = $request->username;
 
-        $job = (new InstagramGetAccountFollowersJob($userUsername, $userPassword, $accountUsername));
+        $job = (new InstagramGetAccountFollowersJob($userAccount, $accountUsername));
         $this->dispatch($job);
 
         return true;
@@ -57,14 +55,11 @@ class InstagramController extends Controller
             'username' => 'required|string',
             'userAccount' => 'required|integer',
         ]);
-
-        $userAccount = UserAccount::findOrFail($request->userAccount);
-
-        $userUsername = $userAccount->username;
-        $userPassword = $userAccount->password;
+        
+        $userAccount = $request->userAccount;
         $accountUsername = $request->username;
 
-        $job = (new InstagramGetAccountFollowingsJob($userUsername, $userPassword, $accountUsername));
+        $job = (new InstagramGetAccountFollowingsJob($userAccount, $accountUsername));
         $this->dispatch($job);
 
         return true;

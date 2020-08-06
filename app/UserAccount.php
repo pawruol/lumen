@@ -19,4 +19,9 @@ class UserAccount extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function workers()
+    {
+        return $this->hasMany('App\Worker');
+    }
 }
