@@ -8,15 +8,19 @@
 		"4818b94c-f386-7136-73d1-a7e5b85abf94",
 		"57dcfb14-755c-ee83-621c-dea645397dfa",
 		"dc7f1334-3fd9-8760-61bd-f69fe15a9ac8",
-		"928abca0-011e-8f0e-96b7-7e6652844432",
-		"6fa776bf-9fbb-ffbb-b45c-503a770d4d94",
+		"c6636176-b42d-aade-575c-7a535094a4fe",
 		"d7d24703-caf5-1006-4cb6-bb806c7e0a0c",
-		"3cd8b6a1-f316-b770-78a1-b6046e091675"
+		"3cd8b6a1-f316-b770-78a1-b6046e091675",
+		"d2ae4286-ceda-e9ad-76cc-2a008973497f",
+		"51689f7f-6b2c-1ec2-ab2b-e67a556bd8ee",
+		"c784fe52-a823-8b12-3939-43d2b5810d68",
+		"928abca0-011e-8f0e-96b7-7e6652844432",
+		"6fa776bf-9fbb-ffbb-b45c-503a770d4d94"
 	],
 	"folders": [],
 	"folders_order": [],
 	"timestamp": 1596566393940,
-	"owner": 0,
+	"owner": "11850000",
 	"public": false,
 	"requests": [
 		{
@@ -43,7 +47,7 @@
 			"currentHelper": "normal",
 			"helperAttributes": {},
 			"time": 1596667752616,
-			"name": "get user accounts copy",
+			"name": "get single user account",
 			"description": "",
 			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
 			"responses": []
@@ -72,6 +76,34 @@
 			"helperAttributes": {},
 			"time": 1596569820568,
 			"name": "get all users",
+			"description": "",
+			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
+			"responses": []
+		},
+		{
+			"id": "51689f7f-6b2c-1ec2-ab2b-e67a556bd8ee",
+			"headers": "Authorization: Bearer {{token}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{api}}/workers/1",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1596746340130,
+			"name": "get single worker",
 			"description": "",
 			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
 			"responses": []
@@ -121,7 +153,7 @@
 					"enabled": true
 				}
 			],
-			"url": "{{api}}/instagram/getAccountFollowings",
+			"url": "{{api}}/instagram/get-account-followings",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -147,7 +179,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1596668881390,
+			"time": 1596746036636,
 			"name": "scraper get account followings",
 			"description": "",
 			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
@@ -214,7 +246,7 @@
 					"enabled": true
 				}
 			],
-			"url": "{{api}}/instagram/getAccountFollowers",
+			"url": "{{api}}/instagram/get-account-followers",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -240,7 +272,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1596668743413,
+			"time": 1596746028744,
 			"name": "scraper get account followers",
 			"description": "",
 			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
@@ -305,6 +337,118 @@
 			"responses": []
 		},
 		{
+			"id": "c6636176-b42d-aade-575c-7a535094a4fe",
+			"headers": "Authorization: Bearer {{token}}\nContent-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{token}}",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{api}}/user/accounts",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "type",
+					"value": "instagram",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "username",
+					"value": "test1",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "test1",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1596740455727,
+			"name": "store user account",
+			"description": "",
+			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
+			"responses": []
+		},
+		{
+			"id": "c784fe52-a823-8b12-3939-43d2b5810d68",
+			"headers": "Authorization: Bearer {{token}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{api}}/user/accounts/1/workers",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1596746431027,
+			"name": "get user account workers",
+			"description": "",
+			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
+			"responses": []
+		},
+		{
+			"id": "d2ae4286-ceda-e9ad-76cc-2a008973497f",
+			"headers": "Authorization: Bearer {{token}}\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer {{token}}",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{api}}/workers",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1596746297749,
+			"name": "get all workers",
+			"description": "",
+			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
+			"responses": []
+		},
+		{
 			"id": "d7d24703-caf5-1006-4cb6-bb806c7e0a0c",
 			"headers": "Authorization: Bearer {{token}}\n",
 			"headerData": [
@@ -324,7 +468,7 @@
 			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
 			"data": null,
 			"dataMode": "params",
-			"name": "get user accounts",
+			"name": "get all user accounts",
 			"description": "",
 			"descriptionFormat": "html",
 			"time": 1596667298108,

@@ -1,6 +1,8 @@
 = LUMEN
 // Run queue worker
 php artisan queue:work
+// Run database migrate
+php artisan migrate
 
 = GIT
 // Add uncommited files to git
