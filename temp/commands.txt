@@ -11,3 +11,7 @@ git add .
 git commit -m "commit message"
 // Push commit changes to remote
 git push -u origin master
+
+= ANGULAR
+// Build and copy files to public
+ng build
