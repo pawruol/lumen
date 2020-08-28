@@ -1,7 +1,58 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="https://www.devglan.com">Devglan</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-</nav>
-<router-outlet></router-outlet>
+<div class="layout" fxLayout="column" fxLayout.xs="column" fxFlexFill>
+
+
+  <div class="header">
+    <mat-toolbar>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>{{title}}</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>notifications_none</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Redial</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>voicemail</mat-icon>
+          <span>Check voice mail</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>notifications_off</mat-icon>
+          <span>Disable alerts</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar>
+  </div>
+
+
+  <div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill>
+    <div class="side" fxFlex="25" fxFlex.xs="25">
+      <mat-list>
+        <div mat-subheader>Notes</div>
+        <mat-list-item *ngFor="let account of userAccounts">
+          <mat-icon mat-list-icon>note</mat-icon>
+          <div mat-line>{{account.username}}</div>
+          <div mat-line> {{account.type}} </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </div>
+    <div class="container" fxFlex="75">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+
+  <div class="footer">
+    Footer
+  </div>
+
+
+</div>

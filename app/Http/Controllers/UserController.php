@@ -37,7 +37,7 @@ class UserController extends Controller
      */
     public function allUsers()
     {
-         return response()->json(['users' =>  User::all()], 200);
+         return response()->json(['result' =>  User::all()], 200);
     }
 
     /**
@@ -50,7 +50,7 @@ class UserController extends Controller
         try {
             $user = User::findOrFail($id);
 
-            return response()->json(['user' => $user], 200);
+            return response()->json(['result' => $user], 200);
 
         } catch (\Exception $e) {
 
@@ -66,7 +66,7 @@ class UserController extends Controller
      */
     public function allUserAccounts()
     {
-         return response()->json(['userAccounts' =>  User::find(Auth::id())->userAccounts], 200);
+         return response()->json(['result' =>  User::find(Auth::id())->userAccounts], 200);
     }
 
     /**
@@ -96,7 +96,7 @@ class UserController extends Controller
      */
     public function storeUserAccount(Request $request)
     {
-        //validate incoming request 
+        //validate incoming request
         $this->validate($request, [
             'type' => 'required|string',
             'username' => 'required|string',
