@@ -28,7 +28,7 @@ class WorkerController extends Controller
      */
     public function allWorkers()
     {
-         return response()->json(['workers' =>  Worker::all()], 200);
+         return response()->json(['result' =>  Worker::all()], 200);
     }
 
     /**
@@ -57,7 +57,7 @@ class WorkerController extends Controller
      */
     public function allUserAccountWorkers($id)
     {
-         return response()->json(['userAccountWorkers' =>  UserAccount::find($id)->workers], 200);
+         return response()->json(['result' =>  UserAccount::find($id)->workers], 200);
     }
 
 }

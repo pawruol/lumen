@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       if (data.status === 200) {
         window.localStorage.setItem('token', data.result.token);
         window.localStorage.setItem('token_type', data.result.token_type);
-        this.router.navigate(['list-user']);
+        window.location.href = '/list-user';
       } else {
         this.invalidLogin = true;
         alert(data.message);
