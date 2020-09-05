@@ -51,13 +51,31 @@ class WorkerController extends Controller
     }
 
     /**
-     * Get all User Workers.
+     * Get all User Account Workers.
      *
      * @return Response
      */
     public function allUserAccountWorkers($id)
     {
          return response()->json(['result' =>  UserAccount::find($id)->workers], 200);
+    }
+
+    /**
+     * Get all User Workers.
+     *
+     * @return Response
+     */
+    public function allUserWorkers()
+    {
+        $userWorkers = [];
+        $userAccounts = User::find(Auth::id())->userAccounts;
+        foreach ($userAccounts as $userAccount) {
+            foreach (UserAccount::find($userAccount->id)->workers as $worker) {
+                array_push($userWorkers, $worker);
+            }
+        }
+
+        return response()->json(['result' =>  $userWorkers], 200);
     }
 
 }

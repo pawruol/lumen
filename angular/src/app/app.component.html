@@ -26,14 +26,23 @@
 
   <div class="content" fxLayout="row" fxLayout.xs="column" fxFlexFill>
     <div class="side" fxFlex="25" fxFlex.xs="25">
-      <mat-list>
+      <mat-selection-list [multiple]="false">
         <div mat-subheader>User Accounts</div>
-        <mat-list-item *ngFor="let account of userAccounts">
+
+        <mat-list-option [selected]="selectedUserAccount == account.id" (click)="setUserAccount(account.id);" *ngFor="let account of userAccounts">
           <mat-icon mat-list-icon>note</mat-icon>
           <div mat-line>{{account.username}}</div>
           <div mat-line> {{account.type}} </div>
-        </mat-list-item>
+        </mat-list-option >
         <mat-divider></mat-divider>
+      </mat-selection-list>
+
+      <mat-list>
+        <div mat-subheader>History</div>
+        <mat-list-item *ngFor="let worker of userWorkers">
+          <div mat-line>{{worker.job}}</div>
+          <div mat-line> {{worker.created_at | date}} </div>
+        </mat-list-item>
       </mat-list>
     </div>
     <div class="container" fxFlex="75">

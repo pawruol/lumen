@@ -1,6 +1,9 @@
 
-<h1>List of Users</h1>
-<div id="table-container" class="mat-elevation-z8" style="overflow: auto;">
+<h1>List of Workers</h1>
+<!--<a href="/add-user" mat-raised-button color="primary">Add new user</a>
+<br>
+<br>-->
+<div id="table-container" class="mat-elevation-z1" style="overflow: auto;">
   <table mat-table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)"
          cdkDropListGroup>
     <ng-container *ngFor="let col of displayColumns; let i=index;" matColumnDef="{{col}}"
@@ -19,9 +22,28 @@
   <mat-paginator [pageSize]="25" [pageSizeOptions]="[25, 50, 100]" showFirstLastButtons></mat-paginator>
 </div>
 <br>
-<a href="/add-user" mat-raised-button color="primary">Add new user</a>
 
-
+<h1>User Account Actions</h1>
+<mat-card class="example-card">
+  <mat-card-content>
+    <p>
+      Get Account Followers
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="startWorker('get-account-followers')" mat-button>Start</button>
+  </mat-card-actions>
+</mat-card>
+<mat-card class="example-card">
+  <mat-card-content>
+    <p>
+      Get Account Followings
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button (click)="startWorker('get-account-followings')" mat-button>Start</button>
+  </mat-card-actions>
+</mat-card>
 <!--
 <button class="btn btn-danger" style="width:100px" (click)="addUser()"> Add User</button>
 <button class="btn btn-success" (click)="deleteUser(user)"> Delete</button>

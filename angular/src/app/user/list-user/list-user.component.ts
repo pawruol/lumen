@@ -15,8 +15,11 @@ import { MatPaginator } from '@angular/material/paginator';
 export class ListUserComponent implements OnInit {
 
   data = [];
-  displayColumns: string[] = ['id', 'name', 'email', 'created_at', 'updated_at'];
+  displayColumns: string[] = ['id', 'job', 'progress', 'status', 'result', 'created_at', 'updated_at'];
   dataSource = new MatTableDataSource<any>();
+
+
+  selectedUserAccount = window.localStorage.getItem('selectedUserAccount');
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -36,7 +39,7 @@ export class ListUserComponent implements OnInit {
       this.router.navigate(['login']);
       return;
     }
-    this.apiService.getUsers()
+    this.apiService.getUserAccountWorkers(this.selectedUserAccount)
       .subscribe( data => {
         this.data = data.result;
         this.dataSource.data = data.result;
@@ -55,6 +58,14 @@ export class ListUserComponent implements OnInit {
         (a, b) => a[sortId] < b[sortId] ? -1 : a[sortId] > b[sortId] ? 1 : 0
       );
     }
+  }
+
+  startWorker(worker: string) {
+    this.apiService.startWorker(worker, this.selectedUserAccount)
+      .subscribe( data => {
+        this.data = data.result;
+        this.dataSource.data = data.result;
+      });
   }
 
   openFilter(col: string) {

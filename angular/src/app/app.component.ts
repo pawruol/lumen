@@ -11,11 +11,19 @@ import {Router} from '@angular/router';
 export class AppComponent {
   title = 'angular';
   userAccounts = [];
+  userWorkers = [];
+  selectedUserAccount = window.localStorage.getItem('selectedUserAccount');
 
   constructor(private router: Router, private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.getUserAccounts();
+    this.getUserWorkers();
+  }
+
+  public setUserAccount(userAccountId): any {
+    window.localStorage.setItem('selectedUserAccount', userAccountId);
+    window.location.reload();
   }
 
   private getUserAccounts(): any {
@@ -28,4 +36,16 @@ export class AppComponent {
         this.userAccounts = data.result;
       });
   }
+
+  private getUserWorkers(): any {
+    if (!window.localStorage.getItem('token')) {
+      this.router.navigate(['login']);
+      return;
+    }
+    this.apiService.getUserWorkers()
+      .subscribe( data => {
+        this.userWorkers = data.result;
+      });
+  }
+
 }

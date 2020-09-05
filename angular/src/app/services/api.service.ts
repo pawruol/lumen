@@ -19,8 +19,20 @@ export class ApiService {
     return this.http.post<ApiResponse>(this.apiUrl + 'register', user);
   }
 
+  startWorker(worker: string, userAccount): Observable<ApiResponse> {
+      return this.http.post<ApiResponse>(this.apiUrl + 'instagram/' + worker, {username: 'instagram', userAccount: userAccount});
+  }
+
   getUsers() : Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.apiUrl + 'users');
+  }
+
+  getUserAccountWorkers(userAccount) : Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.apiUrl + 'user/accounts/' + userAccount + '/workers');
+  }
+
+  getUserWorkers() : Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.apiUrl + 'user/workers');
   }
 
   getUserAccounts() : Observable<ApiResponse> {

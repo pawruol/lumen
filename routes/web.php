@@ -26,7 +26,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
     // Matches "/api/profile
     $router->get('user', 'UserController@profile');
-    // Matches "/api/users/1 
+    // Matches "/api/users/1
     $router->get('users/{id}', 'UserController@singleUser');
     // Matches "/api/users
     $router->get('users', 'UserController@allUsers');
@@ -34,15 +34,17 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
     // Matches "/api/user/accounts
     $router->get('user/accounts', 'UserController@allUserAccounts');
-    // Matches "/api/user/accounts/1 
+    // Matches "/api/user/accounts/1
     $router->get('user/accounts/{id}', 'UserController@singleUserAccount');
-    // Matches "/api/user/accounts 
+    // Matches "/api/user/accounts
     $router->post('user/accounts', 'UserController@storeUserAccount');
 
-    
+
     // Matches "/api/workers
     $router->get('workers', 'WorkerController@allWorkers');
-    // Matches "/api/worker/1 
+    // Matches "/api/workers
+    $router->get('user/workers', 'WorkerController@allUserWorkers');
+    // Matches "/api/worker/1
     $router->get('workers/{id}', 'WorkerController@singleWorker');
     // Matches "/api/user/accounts/1/workers
     $router->get('user/accounts/{id}/workers', 'WorkerController@allUserAccountWorkers');

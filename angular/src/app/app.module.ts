@@ -21,6 +21,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -30,21 +31,22 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AddUserComponent,
     EditUserComponent
   ],
-  imports: [
-    BrowserModule,
-    routing,
-    ReactiveFormsModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatListModule,
-    MatMenuModule,
-    FlexLayoutModule
-  ],
+    imports: [
+        BrowserModule,
+        routing,
+        ReactiveFormsModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatListModule,
+        MatMenuModule,
+        FlexLayoutModule,
+        MatCardModule
+    ],
   providers: [
     ApiService, {
       provide: HTTP_INTERCEPTORS,
