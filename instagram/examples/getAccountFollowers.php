@@ -14,5 +14,5 @@ $username = $argv[3];
 $followers = [];
 $account = $instagram->getAccount($username);
 sleep(1);
-$followers = $instagram->getFollowers($account->getId(), 100, 100, true); // Get 1000 followers of 'kevin', 100 a time with random delay between requests
+$followers = $instagram->getFollowers($account->getId(), 500, 100, true); // Get 1000 followers of 'kevin', 100 a time with random delay between requests
 echo json_encode($followers, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);

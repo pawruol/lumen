@@ -53,5 +53,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     // Matches "/api/instagram
     $router->post('instagram/get-account-followers', 'InstagramController@getAccountFollowers');
     $router->post('instagram/get-account-followings', 'InstagramController@getAccountFollowings');
+    $router->post('instagram/like-account', 'InstagramController@likeAccount');
 
 });

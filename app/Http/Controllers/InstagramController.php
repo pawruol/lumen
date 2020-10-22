@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\InstagramLikeAccountJob;
 use Illuminate\Http\Request;
 use App\User;
 use App\UserAccount;
@@ -27,14 +28,35 @@ class InstagramController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function getAccountFollowers(Request $request)
+    public function likeAccount(Request $request)
     {
-        //validate incoming request 
+        //validate incoming request
         $this->validate($request, [
             'username' => 'required|string',
             'userAccount' => 'required|integer',
         ]);
-        
+
+        $userAccount = $request->userAccount;
+        $accountUsername = $request->username;
+
+        $job = (new InstagramLikeAccountJob($userAccount, $accountUsername));
+        $this->dispatch($job);
+
+        return true;
+    }
+
+    /**
+     * @param  Request  $request
+     * @return Response
+     */
+    public function getAccountFollowers(Request $request)
+    {
+        //validate incoming request
+        $this->validate($request, [
+            'username' => 'required|string',
+            'userAccount' => 'required|integer',
+        ]);
+
         $userAccount = $request->userAccount;
         $accountUsername = $request->username;
 
@@ -50,12 +72,12 @@ class InstagramController extends Controller
      */
     public function getAccountFollowings(Request $request)
     {
-        //validate incoming request 
+        //validate incoming request
         $this->validate($request, [
             'username' => 'required|string',
             'userAccount' => 'required|integer',
         ]);
-        
+
         $userAccount = $request->userAccount;
         $accountUsername = $request->username;
 

@@ -20,7 +20,7 @@ export class ApiService {
   }
 
   startWorker(worker: string, userAccount): Observable<ApiResponse> {
-      return this.http.post<ApiResponse>(this.apiUrl + 'instagram/' + worker, {username: 'instagram', userAccount: userAccount});
+      return this.http.post<ApiResponse>(this.apiUrl + 'instagram/' + worker, {username: 'alena.smolnitskaya', userAccount: userAccount});
   }
 
   getUsers() : Observable<ApiResponse> {
