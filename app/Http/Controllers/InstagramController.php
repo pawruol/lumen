@@ -28,27 +28,6 @@ class InstagramController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function likeAccount(Request $request)
-    {
-        //validate incoming request
-        $this->validate($request, [
-            'username' => 'required|string',
-            'userAccount' => 'required|integer',
-        ]);
-
-        $userAccount = $request->userAccount;
-        $accountUsername = $request->username;
-
-        $job = (new InstagramLikeAccountJob($userAccount, $accountUsername));
-        $this->dispatch($job);
-
-        return true;
-    }
-
-    /**
-     * @param  Request  $request
-     * @return Response
-     */
     public function getAccountFollowers(Request $request)
     {
         //validate incoming request
