@@ -1,0 +1,11 @@
+.appWrapper {
+    display: grid;
+    margin: 0 auto;
+
+    grid-template-areas:
+            "header header"
+            "navb content";
+
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+}

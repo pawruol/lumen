@@ -1,510 +1,445 @@
 {
-	"id": "eae93e88-02f3-db2b-205d-5853122736fc",
-	"name": "lumen",
-	"description": "",
-	"order": [
-		"b01c86ea-5837-b70a-85ab-46dd964ca701",
-		"7ea8bbdf-41b2-bc1c-4db4-f4208e855809",
-		"4818b94c-f386-7136-73d1-a7e5b85abf94",
-		"57dcfb14-755c-ee83-621c-dea645397dfa",
-		"dc7f1334-3fd9-8760-61bd-f69fe15a9ac8",
-		"c6636176-b42d-aade-575c-7a535094a4fe",
-		"d7d24703-caf5-1006-4cb6-bb806c7e0a0c",
-		"3cd8b6a1-f316-b770-78a1-b6046e091675",
-		"d2ae4286-ceda-e9ad-76cc-2a008973497f",
-		"51689f7f-6b2c-1ec2-ab2b-e67a556bd8ee",
-		"c784fe52-a823-8b12-3939-43d2b5810d68",
-		"928abca0-011e-8f0e-96b7-7e6652844432",
-		"6fa776bf-9fbb-ffbb-b45c-503a770d4d94"
-	],
-	"folders": [],
-	"folders_order": [],
-	"timestamp": 1596566393940,
-	"owner": "11850000",
-	"public": false,
-	"requests": [
+	"info": {
+		"_postman_id": "f5bb4bd8-a20c-47a4-a9a6-993033623190",
+		"name": "lumen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "3cd8b6a1-f316-b770-78a1-b6046e091675",
-			"headers": "Authorization: Bearer {{token}}\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{api}}/user/accounts/1",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1596667752616,
-			"name": "get single user account",
-			"description": "",
-			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
-			"responses": []
-		},
-		{
-			"id": "4818b94c-f386-7136-73d1-a7e5b85abf94",
-			"headers": "Authorization: Bearer {{token}}\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{api}}/users",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1596569820568,
-			"name": "get all users",
-			"description": "",
-			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
-			"responses": []
-		},
-		{
-			"id": "51689f7f-6b2c-1ec2-ab2b-e67a556bd8ee",
-			"headers": "Authorization: Bearer {{token}}\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{api}}/workers/1",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1596746340130,
-			"name": "get single worker",
-			"description": "",
-			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
-			"responses": []
-		},
-		{
-			"id": "57dcfb14-755c-ee83-621c-dea645397dfa",
-			"headers": "Authorization: Bearer {{token}}\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{api}}/users/1",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1596569868650,
-			"name": "get single user",
-			"description": "",
-			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
-			"responses": []
-		},
-		{
-			"id": "6fa776bf-9fbb-ffbb-b45c-503a770d4d94",
-			"headers": "Authorization: Bearer {{token}}\nContent-Type: application/x-www-form-urlencoded\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{token}}",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/x-www-form-urlencoded",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{api}}/instagram/get-account-followings",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "username",
-					"value": "alena.smolnitskaya",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "userAccount",
-					"value": "1",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "urlencoded",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1596746036636,
-			"name": "scraper get account followings",
-			"description": "",
-			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
-			"responses": []
-		},
-		{
-			"id": "7ea8bbdf-41b2-bc1c-4db4-f4208e855809",
-			"headers": "Content-Type: application/x-www-form-urlencoded\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/x-www-form-urlencoded",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{api}}/login",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "email",
-					"value": "email@email.com",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "password",
-					"value": "password",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "urlencoded",
-			"version": 2,
-			"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"token\", jsonData.token);",
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1596569616133,
-			"name": "login",
-			"description": "",
-			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
-			"responses": []
-		},
-		{
-			"id": "928abca0-011e-8f0e-96b7-7e6652844432",
-			"headers": "Authorization: Bearer {{token}}\nContent-Type: application/x-www-form-urlencoded\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{token}}",
-					"description": "",
-					"enabled": true
-				},
-				{
-					"key": "Content-Type",
-					"value": "application/x-www-form-urlencoded",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{api}}/instagram/get-account-followers",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "username",
-					"value": "alena.smolnitskaya",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "userAccount",
-					"value": "1",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "urlencoded",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1596746028744,
-			"name": "scraper get account followers",
-			"description": "",
-			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
-			"responses": []
-		},
-		{
-			"id": "b01c86ea-5837-b70a-85ab-46dd964ca701",
-			"headers": "Content-Type: application/x-www-form-urlencoded\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/x-www-form-urlencoded",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{api}}/register",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "name",
-					"value": "User",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "email",
-					"value": "email@email.com",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "password",
-					"value": "password",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "password_confirmation",
-					"value": "password",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				}
-			],
-			"dataMode": "urlencoded",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1596566720181,
 			"name": "register",
-			"description": "",
-			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
-			"responses": []
-		},
-		{
-			"id": "c6636176-b42d-aade-575c-7a535094a4fe",
-			"headers": "Authorization: Bearer {{token}}\nContent-Type: application/x-www-form-urlencoded\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{token}}",
-					"description": "",
-					"enabled": true
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "User",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "email@email.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "password",
+							"type": "text"
+						}
+					]
 				},
+				"url": {
+					"raw": "{{api}}/register",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
 				{
-					"key": "Content-Type",
-					"value": "application/x-www-form-urlencoded",
-					"description": "",
-					"enabled": true
+					"listen": "test",
+					"script": {
+						"id": "2294302b-2bd6-4ac3-a632-990fd103336a",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"token\", jsonData.result.token);"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
-			"url": "{{api}}/user/accounts",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [
-				{
-					"key": "type",
-					"value": "instagram",
-					"description": "",
-					"type": "text",
-					"enabled": true
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "email@email.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						}
+					]
 				},
-				{
-					"key": "username",
-					"value": "test1",
-					"description": "",
-					"type": "text",
-					"enabled": true
-				},
-				{
-					"key": "password",
-					"value": "test1",
-					"description": "",
-					"type": "text",
-					"enabled": true
+				"url": {
+					"raw": "{{api}}/login",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"login"
+					]
 				}
-			],
-			"dataMode": "urlencoded",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1596740455727,
-			"name": "store user account",
-			"description": "",
-			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
-			"responses": []
+			},
+			"response": []
 		},
 		{
-			"id": "c784fe52-a823-8b12-3939-43d2b5810d68",
-			"headers": "Authorization: Bearer {{token}}\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{token}}",
-					"description": "",
-					"enabled": true
+			"name": "get all users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/users",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"users"
+					]
 				}
-			],
-			"url": "{{api}}/user/accounts/1/workers",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1596746431027,
-			"name": "get user account workers",
-			"description": "",
-			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
-			"responses": []
+			},
+			"response": []
 		},
 		{
-			"id": "d2ae4286-ceda-e9ad-76cc-2a008973497f",
-			"headers": "Authorization: Bearer {{token}}\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{token}}",
-					"description": "",
-					"enabled": true
+			"name": "get single user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/users/1",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"users",
+						"1"
+					]
 				}
-			],
-			"url": "{{api}}/workers",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1596746297749,
-			"name": "get all workers",
-			"description": "",
-			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
-			"responses": []
+			},
+			"response": []
 		},
 		{
-			"id": "d7d24703-caf5-1006-4cb6-bb806c7e0a0c",
-			"headers": "Authorization: Bearer {{token}}\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{api}}/user/accounts",
-			"queryParams": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"preRequestScript": null,
-			"method": "GET",
-			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
-			"data": null,
-			"dataMode": "params",
-			"name": "get all user accounts",
-			"description": "",
-			"descriptionFormat": "html",
-			"time": 1596667298108,
-			"version": 2,
-			"responses": [],
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {}
-		},
-		{
-			"id": "dc7f1334-3fd9-8760-61bd-f69fe15a9ac8",
-			"headers": "Authorization: Bearer {{token}}\n",
-			"headerData": [
-				{
-					"key": "Authorization",
-					"value": "Bearer {{token}}",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{api}}/user",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1596667287877,
 			"name": "get profile current user",
-			"description": "",
-			"collectionId": "eae93e88-02f3-db2b-205d-5853122736fc",
-			"responses": []
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/user",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "store user account",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "type",
+							"value": "instagram",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "pawruol",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "qazasdfghy",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api}}/user/accounts",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"user",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all user accounts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/user/accounts",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"user",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get single user account",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/user/accounts/1",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"user",
+						"accounts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all workers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/workers",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"workers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all user workers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/user/workers",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"user",
+						"workers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get single worker",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/workers/1",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"workers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user account workers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/user/accounts/1/workers",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"user",
+						"accounts",
+						"1",
+						"workers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scraper get account followers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "alena.smolnitskaya",
+							"type": "text"
+						},
+						{
+							"key": "userAccount",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api}}/instagram/get-account-followers",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"instagram",
+						"get-account-followers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scraper get account followings",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "alena.smolnitskaya",
+							"type": "text"
+						},
+						{
+							"key": "userAccount",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{api}}/instagram/get-account-followings",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"instagram",
+						"get-account-followings"
+					]
+				}
+			},
+			"response": []
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
