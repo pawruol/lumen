@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\InstagramLikeAccountJob;
+require_once __DIR__.'/../../../instagram/vendor/autoload.php';
+
 use Illuminate\Http\Request;
 use App\User;
 use App\UserAccount;

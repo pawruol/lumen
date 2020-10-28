@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 
 export class AppComponent {
-  title = 'angular';
+  title = 'angular_old';
   userAccounts = [];
   userWorkers = [];
   selectedUserAccount = window.localStorage.getItem('selectedUserAccount');

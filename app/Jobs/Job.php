@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+require_once __DIR__.'/../../instagram/vendor/autoload.php';
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -21,5 +23,5 @@ abstract class Job implements ShouldQueue
     */
 
     use InteractsWithQueue, Queueable, SerializesModels;
-    
+
 }
