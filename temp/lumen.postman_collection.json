@@ -103,51 +103,6 @@
 			"response": []
 		},
 		{
-			"name": "get all users",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}"
-					}
-				],
-				"url": {
-					"raw": "{{api}}/users",
-					"host": [
-						"{{api}}"
-					],
-					"path": [
-						"users"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get single user",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}"
-					}
-				],
-				"url": {
-					"raw": "{{api}}/users/1",
-					"host": [
-						"{{api}}"
-					],
-					"path": [
-						"users",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "get profile current user",
 			"request": {
 				"method": "GET",
@@ -164,6 +119,53 @@
 					],
 					"path": [
 						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all user accounts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/user/accounts",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"user",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get single user account",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/user/accounts/3",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"user",
+						"accounts",
+						"3"
 					]
 				}
 			},
@@ -211,53 +213,6 @@
 					"path": [
 						"user",
 						"accounts"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get all user accounts",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}"
-					}
-				],
-				"url": {
-					"raw": "{{api}}/user/accounts",
-					"host": [
-						"{{api}}"
-					],
-					"path": [
-						"user",
-						"accounts"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get single user account",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}"
-					}
-				],
-				"url": {
-					"raw": "{{api}}/user/accounts/1",
-					"host": [
-						"{{api}}"
-					],
-					"path": [
-						"user",
-						"accounts",
-						"1"
 					]
 				}
 			},
