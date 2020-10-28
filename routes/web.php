@@ -18,36 +18,29 @@ $router->get('/', function () use ($router) {
 
 // API route group
 $router->group(['prefix' => 'api'], function () use ($router) {
+
     // Matches "/api/register
     $router->post('register', 'AuthController@register');
     // Matches "/api/login
     $router->post('login', 'AuthController@login');
 
-
     // Matches "/api/profile
     $router->get('user', 'UserController@profile');
-    // Matches "/api/users/1
-    $router->get('users/{id}', 'UserController@singleUser');
-    // Matches "/api/users
-    $router->get('users', 'UserController@allUsers');
-
 
     // Matches "/api/user/accounts
-    $router->get('user/accounts', 'UserController@allUserAccounts');
+    $router->get('user/accounts', 'UserController@allAccounts');
     // Matches "/api/user/accounts/1
-    $router->get('user/accounts/{id}', 'UserController@singleUserAccount');
+    $router->get('user/accounts/{id}', 'UserController@singleAccount');
     // Matches "/api/user/accounts
-    $router->post('user/accounts', 'UserController@storeUserAccount');
+    $router->post('user/accounts', 'UserController@storeAccount');
 
 
     // Matches "/api/workers
-    $router->get('workers', 'WorkerController@allWorkers');
-    // Matches "/api/workers
-    $router->get('user/workers', 'WorkerController@allUserWorkers');
-    // Matches "/api/worker/1
+    $router->get('user/workers', 'WorkerController@allWorkers');
+    // Matches "/api/workers/1
     $router->get('workers/{id}', 'WorkerController@singleWorker');
     // Matches "/api/user/accounts/1/workers
-    $router->get('user/accounts/{id}/workers', 'WorkerController@allUserAccountWorkers');
+    $router->get('user/accounts/{id}/workers', 'WorkerController@allAccountWorkers');
 
 
     // Matches "/api/instagram

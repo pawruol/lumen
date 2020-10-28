@@ -27,36 +27,7 @@ class UserController extends Controller
      */
     public function profile()
     {
-        return response()->json(['user' => Auth::user()], 200);
-    }
-
-    /**
-     * Get all User.
-     *
-     * @return Response
-     */
-    public function allUsers()
-    {
-         return response()->json(['result' =>  User::all()], 200);
-    }
-
-    /**
-     * Get one user.
-     *
-     * @return Response
-     */
-    public function singleUser($id)
-    {
-        try {
-            $user = User::findOrFail($id);
-
-            return response()->json(['result' => $user], 200);
-
-        } catch (\Exception $e) {
-
-            return response()->json(['message' => 'User not found!'], 404);
-        }
-
+        return response()->json(['data' => Auth::user(), 'code' => 1], 200);
     }
 
     /**
@@ -64,9 +35,9 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function allUserAccounts()
+    public function allAccounts()
     {
-         return response()->json(['result' =>  User::find(Auth::id())->userAccounts], 200);
+         return response()->json(['data' =>  User::find(Auth::id())->userAccounts, 'code' => 1], 200);
     }
 
     /**
@@ -74,16 +45,19 @@ class UserController extends Controller
      *
      * @return Response
      */
-    public function singleUserAccount($id)
+    public function singleAccount($id)
     {
         try {
-            $userAccount = UserAccount::findOrFail($id);
+            $userAccount = UserAccount::where([
+                ['user_id', '=', Auth::id()],
+                ['id', '=', $id]
+            ])->firstOrFail();;
 
-            return response()->json(['userAccount' => $userAccount], 200);
+            return response()->json(['data' => $userAccount, 'code' => 1], 200);
 
         } catch (\Exception $e) {
 
-            return response()->json(['message' => 'User account not found!'], 404);
+            return response()->json(['message' => 'User account not found!', 'code' => 0], 404);
         }
 
     }
@@ -94,7 +68,7 @@ class UserController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function storeUserAccount(Request $request)
+    public function storeAccount(Request $request)
     {
         //validate incoming request
         $this->validate($request, [
@@ -112,10 +86,10 @@ class UserController extends Controller
             $userAccount->save();
 
             //return successful response
-            return response()->json(['userAccount' => $userAccount, 'message' => 'User account stored!'], 201);
+            return response()->json(['data' => $userAccount, 'code' => 1], 201);
         } catch (\Exception $e) {
             //return error message
-            return response()->json(['message' => 'User account stored failed!'], 409);
+            return response()->json(['message' => 'User account store failed!', 'code' => 0], 409);
         }
 
     }

@@ -27,10 +27,10 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        //validate incoming request 
+        //validate incoming request
         $this->validate($request, [
             'name' => 'required|string',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email',
             'password' => 'required|confirmed',
         ]);
 
@@ -41,15 +41,12 @@ class AuthController extends Controller
             $user->email = $request->input('email');
             $plainPassword = $request->input('password');
             $user->password = app('hash')->make($plainPassword);
-
             $user->save();
 
-            //return successful response
-            return response()->json(['user' => $user, 'message' => 'User registration succesful!'], 201);
+            return response()->json(['data' => $user, 'message' => 'User registration successful!', 'code' => 1], 201);
 
         } catch (\Exception $e) {
-            //return error message
-            return response()->json(['message' => 'User registration failed!'], 409);
+            return response()->json(['message' => 'User registration failed!', 'code' => 0], 409);
         }
 
     }
@@ -62,7 +59,7 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-          //validate incoming request 
+          //validate incoming request
         $this->validate($request, [
             'email' => 'required|string',
             'password' => 'required|string',
@@ -71,7 +68,7 @@ class AuthController extends Controller
         $credentials = $request->only(['email', 'password']);
 
         if (! $token = Auth::attempt($credentials)) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return response()->json(['message' => 'Unauthorized', 'code' => 0], 401);
         }
 
         return $this->respondWithToken($token);

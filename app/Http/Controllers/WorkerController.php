@@ -22,16 +22,6 @@ class WorkerController extends Controller
     }
 
     /**
-     * Get all Workers.
-     *
-     * @return Response
-     */
-    public function allWorkers()
-    {
-         return response()->json(['result' =>  Worker::all()], 200);
-    }
-
-    /**
      * Get one Worker.
      *
      * @return Response
@@ -39,13 +29,25 @@ class WorkerController extends Controller
     public function singleWorker($id)
     {
         try {
-            $worker = Worker::findOrFail($id);
 
-            return response()->json(['worker' => $worker], 200);
+            $userWorker = null;
+            $userAccounts = User::find(Auth::id())->userAccounts;
+            foreach ($userAccounts as $userAccount) {
+                foreach (UserAccount::find($userAccount->id)->workers as $worker) {
+                    if ($worker->id == $id)
+                        $userWorker = $worker;
+                }
+            }
+
+            if ($userWorker == null) {
+                return response()->json(['message' => 'Worker not found!', 'code' => 0], 404);
+            }
+
+            return response()->json(['data' => $userWorker, 'code' => 1], 200);
 
         } catch (\Exception $e) {
 
-            return response()->json(['message' => 'Worker not found!'], 404);
+            return response()->json(['message' => 'Worker not found!', 'code' => 0], 404);
         }
 
     }
@@ -55,9 +57,9 @@ class WorkerController extends Controller
      *
      * @return Response
      */
-    public function allUserAccountWorkers($id)
+    public function allAccountWorkers($id)
     {
-         return response()->json(['result' =>  UserAccount::find($id)->workers], 200);
+         return response()->json(['data' =>  UserAccount::find($id)->workers, 'code' => 1], 200);
     }
 
     /**
@@ -65,7 +67,7 @@ class WorkerController extends Controller
      *
      * @return Response
      */
-    public function allUserWorkers()
+    public function allWorkers()
     {
         $userWorkers = [];
         $userAccounts = User::find(Auth::id())->userAccounts;
@@ -75,7 +77,7 @@ class WorkerController extends Controller
             }
         }
 
-        return response()->json(['result' =>  $userWorkers], 200);
+        return response()->json(['data' =>  $userWorkers, 'code' => 1], 200);
     }
 
 }
