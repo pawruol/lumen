@@ -158,14 +158,14 @@
 					}
 				],
 				"url": {
-					"raw": "{{api}}/user/accounts/3",
+					"raw": "{{api}}/user/accounts/1",
 					"host": [
 						"{{api}}"
 					],
 					"path": [
 						"user",
 						"accounts",
-						"3"
+						"1"
 					]
 				}
 			},
@@ -195,12 +195,12 @@
 						},
 						{
 							"key": "username",
-							"value": "pawruol",
+							"value": "test4",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "qazasdfghy",
+							"value": "test4",
 							"type": "text"
 						}
 					]
@@ -213,28 +213,6 @@
 					"path": [
 						"user",
 						"accounts"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get all workers",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}"
-					}
-				],
-				"url": {
-					"raw": "{{api}}/workers",
-					"host": [
-						"{{api}}"
-					],
-					"path": [
-						"workers"
 					]
 				}
 			},
@@ -274,13 +252,13 @@
 					}
 				],
 				"url": {
-					"raw": "{{api}}/workers/1",
+					"raw": "{{api}}/workers/21",
 					"host": [
 						"{{api}}"
 					],
 					"path": [
 						"workers",
-						"1"
+						"21"
 					]
 				}
 			},
