@@ -34,14 +34,12 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     // Matches "/api/user/accounts
     $router->post('user/accounts', 'UserController@storeAccount');
 
-
     // Matches "/api/workers
     $router->get('user/workers', 'WorkerController@allWorkers');
     // Matches "/api/workers/1
     $router->get('workers/{id}', 'WorkerController@singleWorker');
     // Matches "/api/user/accounts/1/workers
     $router->get('user/accounts/{id}/workers', 'WorkerController@allAccountWorkers');
-
 
     // Matches "/api/instagram
     $router->post('instagram/get-account-followers', 'InstagramController@getAccountFollowers');
