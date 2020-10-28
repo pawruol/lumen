@@ -9,6 +9,9 @@ import { AngularMaterialModule } from './angular-material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+/* HttpModule */
+import { HttpClientModule } from '@angular/common/http';
+
 /* FormsModule */
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -22,7 +25,7 @@ import { RegisterComponent } from './components/register/register.component';
   declarations: [
     AppComponent,
     LogInComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { RegisterComponent } from './components/register/register.component';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
