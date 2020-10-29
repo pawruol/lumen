@@ -3,7 +3,9 @@ import classes from './App.css';
 
 import Main from "./Component/Main/Main";
 import Login from "./Component/Login/Login";
-import {Route, Switch as SwitchRouter} from "react-router-dom";
+import  {withRouter,Route} from "react-router-dom";
+import {connect} from "react-redux";
+import {compose} from "redux";
 
 
 function App() {
@@ -15,4 +17,7 @@ function App() {
     );
 }
 
-export default App;
+
+export default compose(
+    withRouter,
+    connect(null, {}))(App);

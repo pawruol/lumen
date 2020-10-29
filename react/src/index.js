@@ -5,21 +5,21 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
 import {Switch as SwitchRouter} from "react-router-dom";
+import store from "./redux/redux";
+import {Provider} from "react-redux";
 
 
 ReactDOM.render(
     <BrowserRouter>
         <SwitchRouter>
-        <React.StrictMode>
-            <App className={classes.flex}/>
-        </React.StrictMode>
+            <React.StrictMode>
+                <Provider store={store}>
+                    <App />
+                </Provider>
+            </React.StrictMode>
         </SwitchRouter>
     </BrowserRouter>
     , document.getElementById('root'))
 ;
 
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();

@@ -1,23 +1,51 @@
 import React from "react";
 import classes from './login.module.css'
-import Button from "@material-ui/core/Button";
-import Checkbox from '@material-ui/core/Checkbox';
-import {Input} from "@material-ui/core";
+import {Field, reduxForm, values} from "redux-form";
+import {validate} from "../utils/validate";
+import {
+    renderCheckbox,
+    renderTextFieldLogin,
+    renderTextFieldPassword
+} from "../utils/CreateInputMaterialFunction";
+import {connect} from "react-redux";
+import {login} from "../../redux/login-reducer";
 import {Redirect} from "react-router-dom";
+import DataGridDemo from "../DataGrid/DataGrid";
 
 
-const Login = (props) => {
-
+const LoginForm = (props) => {
     return (
-    <form className={classes.root} autoComplete="off">
-        <h3>Login</h3>
-       <div> <Input required id="standard-required" label="login" placeholder={'Login'} type={'text'}  /></div>
-        <div>  <Input required id="standard-required" label="password" placeholder={'Password'} type={'password'}  size={"small"} /></div>
-        <div>
-            <Button variant="contained" size={'small'} onClick={<Redirect to={'/main'}/>}>Login</Button>
-        </div>
-        <div> <Checkbox inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} />remember me</div>
-    </form>)
-}
+<>
+        <form onSubmit={props.handleSubmit}>
+            <div><Field component={renderTextFieldLogin } name={'login'}  /></div>
+            <div><Field  component={renderTextFieldPassword } name={'password'}   /></div>
+            <div><Field component={renderCheckbox} name={'rememberMe'}  />запомнить меня</div>
+            <div>
+                <button>Войти</button>
+            </div>
 
-export default Login
+        </form>
+
+    <button onClick={<Redirect to={DataGridDemo}/>} >Регистрация</button>
+    </>
+    )
+}
+const LoginReduxForm = reduxForm({form: 'login', validate})(LoginForm)
+
+const Login = () => {
+
+    const onSubmit=(formData) =>{
+
+        login(formData.login, formData.password);
+    }
+
+    return (<div className={classes.container}>
+        <p>Login</p>
+        <LoginReduxForm onSubmit={onSubmit}/>
+    </div>)
+}
+let mapDispatchToProps=(state)=>{
+
+}
+export default connect(mapDispatchToProps,{login})(Login)
+
