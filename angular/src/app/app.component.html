@@ -8,8 +8,10 @@
   <span class="example-spacer"></span>
 
   <span class="nav-tool-items">
-    <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
-    <a style="margin-left: 8px" mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+    <a *ngIf="!this.authService.isLoggedIn" mat-button routerLink="login" routerLinkActive="active">Log in</a>
+    <a *ngIf="!this.authService.isLoggedIn" style="margin-left: 8px" mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
+    <a *ngIf="this.authService.isLoggedIn" mat-button routerLink="dashboard" routerLinkActive="active">Dashboard</a>
+    <a (click)="logout()" *ngIf="this.authService.isLoggedIn" style="margin-left: 8px" mat-button mat-raised-button routerLinkActive="active">Logout</a>
   </span>
 
   <!--<button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">

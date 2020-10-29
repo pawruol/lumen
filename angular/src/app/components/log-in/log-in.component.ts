@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from './../../services/auth.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-log-in',
   templateUrl: './log-in.component.html',
@@ -7,12 +10,26 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class LogInComponent implements OnInit {
 
+  signinForm: FormGroup;
   hide = true;
   email = new FormControl('', [Validators.required, Validators.email]);
 
-  constructor() { }
+  constructor(
+    public fb: FormBuilder,
+    public authService: AuthService,
+    public router: Router
+  ) {
+    this.signinForm = this.fb.group({
+      email: [''],
+      password: ['']
+    });
+  }
 
   ngOnInit(): void {
+  }
+
+  loginUser() {
+    this.authService.signIn(this.signinForm.value);
   }
 
   getErrorMessage() {
