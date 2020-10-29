@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+require_once __DIR__.'/../../instagram/vendor/autoload.php';
+
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -52,7 +54,7 @@ class InstagramGetAccountFollowersJob extends Job implements ShouldQueue
         $this->worker->status = "working";
         $this->worker->update();
 
-        $instagram = \InstagramScraper\Instagram::withCredentials($this->userAccount->username, $this->userAccount->password, $this->psr16Adapter);
+        $instagram = \InstagramScraper\Instagram::withCredentials(new \GuzzleHttp\Client(), $this->userAccount->username, $this->userAccount->password, $this->psr16Adapter);
         $instagram->login();
         sleep(2);
 
