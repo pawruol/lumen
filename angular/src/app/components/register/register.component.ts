@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit {
   registerUser() {
     this.authService.signUp(this.signupForm.value).subscribe((res) => {
       if (res.data) {
-        console.log(res);
         this.signupForm.reset();
         this.router.navigate(['login']);
       }
@@ -43,7 +42,7 @@ export class RegisterComponent implements OnInit {
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'You must enter a value';
+      return 'You must enter a correct email';
     }
 
     return this.email.hasError('email') ? 'Not a valid email' : '';
