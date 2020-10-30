@@ -17,6 +17,7 @@ import {AppComponent} from './app.component';
 import {LogInComponent} from './components/log-in/log-in.component';
 import {RegisterComponent} from './components/register/register.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
+import { DialogAddUserAccountComponent } from './components/dialogs/dialog-add-user-account/dialog-add-user-account.component';
 
 
 
@@ -27,6 +28,7 @@ import {DashboardComponent} from './components/dashboard/dashboard.component';
     LogInComponent,
     RegisterComponent,
     DashboardComponent,
+    DialogAddUserAccountComponent,
   ],
   imports: [
     BrowserModule,

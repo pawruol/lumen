@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Добавление аккаунта</h1>
+<p>Введите логин вашего Instagram без "@" и пароль</p>
+<div mat-dialog-content>
+  <div class="row" [formGroup]="dialogForm">
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="full-width-field">
+        <mat-label>Ваш логин</mat-label>
+        <input formControlName="username" matInput  placeholder="test_user">
+      </mat-form-field>
+    </div>
+    <div class="col-md-6">
+      <mat-form-field appearance="fill" class="full-width-field">
+        <mat-label>Enter your password</mat-label>
+        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card style="margin: 25px 0;">
+        <mat-card-header>
+          <mat-card-title>Внимание</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+         <ul>
+           <li>Перед добавлением аккаунта, пожалуйста, убедитесь в том, что у вас есть доступ к E-mail или телефону, указанному в профиле Instagram.</li>
+           <li>Мы не рекомендуем продвигать на сервисе аккаунты инстаграм, с даты создания которых не прошло 21 дня.</li>
+         </ul>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial (click)="submitDialog()">Submit</button>
+</div>
