@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { User } from '../../models/user';
+import {ActivatedRoute} from '@angular/router';
+import {AuthService} from '../../services/auth.service';
+import {User} from '../../models/user';
 import {UserAccount} from "../../models/user-account";
 import {UserService} from "../../services/user.service";
 
@@ -32,6 +32,11 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    let age: number = 25;
+
+    if (typeof(age) === 'number') {
+      console.log(age);
+    }
   }
 
 }
