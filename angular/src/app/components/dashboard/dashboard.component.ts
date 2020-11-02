@@ -5,6 +5,8 @@ import {AuthService} from '../../services/auth.service';
 import {User} from '../../models/user';
 import {UserAccount} from "../../models/user-account";
 import {UserService} from "../../services/user.service";
+import {DialogAddUserAccountComponent} from "../dialogs/dialog-add-user-account/dialog-add-user-account.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +21,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     public authService: AuthService,
     public userService: UserService,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    public dialog: MatDialog
   ) {
     // let id = this.actRoute.snapshot.paramMap.get('id');
     this.authService.getUserProfile().subscribe(res => {
@@ -32,6 +35,21 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  animal: string;
+  name: string;
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogAddUserAccountComponent, {
+      minWidth: '750px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 
 }

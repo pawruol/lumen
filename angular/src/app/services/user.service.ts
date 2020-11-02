@@ -30,6 +30,16 @@ export class UserService {
     )
   }
 
+  addUserAccount(userAccountCredentials): Observable<any> {
+    let api = `${this.endpoint}/user/accounts`;
+    return this.http.post(api, {username:userAccountCredentials.username, password:userAccountCredentials.password, type: 'instagram'},{ headers: this.headers }).pipe(
+      map((res: Response) => {
+        return res || {}
+      }),
+      catchError(this.handleError)
+    )
+  }
+
   // Error
   handleError(error: HttpErrorResponse) {
     let msg = '';
