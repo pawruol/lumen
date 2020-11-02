@@ -32,11 +32,6 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let age: number = 25;
-
-    if (typeof(age) === 'number') {
-      console.log(age);
-    }
   }
 
 }
