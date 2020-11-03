@@ -19,7 +19,7 @@ export class UserService {
   ) {
   }
 
-  // User profile
+
   getUserAccounts(): Observable<any> {
     let api = `${this.endpoint}/user/accounts`;
     return this.http.get(api, { headers: this.headers }).pipe(

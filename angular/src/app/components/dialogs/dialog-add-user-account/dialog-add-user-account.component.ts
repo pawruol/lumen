@@ -30,10 +30,8 @@ export class DialogAddUserAccountComponent {
   }
 
   submitDialog() {
-    console.log(this.dialogForm.value);
     this.userService.addUserAccount(this.dialogForm.value).subscribe((res) => {
       if (res.data) {
-        console.log(res.data);
         this.dialogRef.close();
         this.dialogForm.reset();
       }
