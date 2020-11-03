@@ -1,7 +1,7 @@
 import {Component, OnInit, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {UserService} from "../../../services/user.service";
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {UserService} from '../../../services/user.service';
 
 export interface DialogData {
   animal: string;
@@ -29,9 +29,11 @@ export class DialogAddUserAccountComponent {
     });
   }
 
-  submitDialog() {
+  submitDialog(): void {
+    console.log(this.dialogForm.value);
     this.userService.addUserAccount(this.dialogForm.value).subscribe((res) => {
       if (res.data) {
+        console.log(res.data);
         this.dialogRef.close();
         this.dialogForm.reset();
       }
