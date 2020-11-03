@@ -29,7 +29,6 @@ export class DialogAddUserAccountComponent {
     });
   }
 
-
   submitDialog() {
     console.log(this.dialogForm.value);
     this.userService.addUserAccount(this.dialogForm.value).subscribe((res) => {
@@ -44,7 +43,6 @@ export class DialogAddUserAccountComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
 
 }
 

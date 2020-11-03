@@ -27,6 +27,38 @@ class InstagramController extends Controller
 
     /**
      * @param  Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getAccountByUsername(Request $request)
+    {
+        //validate incoming request
+        $this->validate($request, [
+            'username' => 'required|string',
+        ]);
+
+        $accountUsername = $request->username;
+
+        // If account is public you can query Instagram without auth
+        $instagram = new \InstagramScraper\Instagram(new \GuzzleHttp\Client());
+        $account = $instagram->getAccount($accountUsername);
+
+        return response()->json(['data' => [
+                'id' => $account->getId(),
+                'username' => $account->getUsername(),
+                'full_name' => $account->getFullName(),
+                'biography' => $account->getBiography(),
+                'profile_picture_url' => $account->getProfilePicUrl(),
+                'external_link' => $account->getExternalUrl(),
+                'number_published_posts' => $account->getMediaCount(),
+                'number_followers' => $account->getFollowsCount(),
+                'number_follows' => $account->getFollowedByCount(),
+                'is_private' => $account->isPrivate(),
+                'is_verified' => $account->isVerified(),
+            ], 'code' => 1], 200);
+    }
+
+    /**
+     * @param  Request  $request
      * @return Response
      */
     public function getAccountFollowers(Request $request)

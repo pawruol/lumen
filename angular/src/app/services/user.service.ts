@@ -24,20 +24,20 @@ export class UserService {
     let api = `${this.endpoint}/user/accounts`;
     return this.http.get(api, { headers: this.headers }).pipe(
       map((res: Response) => {
-        return res || {}
+        return res || {};
       }),
       catchError(this.handleError)
-    )
+    );
   }
 
   addUserAccount(userAccountCredentials): Observable<any> {
     let api = `${this.endpoint}/user/accounts`;
-    return this.http.post(api, {username:userAccountCredentials.username, password:userAccountCredentials.password, type: 'instagram'},{ headers: this.headers }).pipe(
+    return this.http.post(api, {username: userAccountCredentials.username, password: userAccountCredentials.password, type: 'instagram'},{ headers: this.headers }).pipe(
       map((res: Response) => {
-        return res || {}
+        return res || {};
       }),
       catchError(this.handleError)
-    )
+    );
   }
 
   // Error

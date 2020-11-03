@@ -42,6 +42,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('user/accounts/{id}/workers', 'WorkerController@allAccountWorkers');
 
     // Matches "/api/instagram
+    $router->get('instagram/get-account-by-username', 'InstagramController@getAccountByUsername');
+
     $router->post('instagram/get-account-followers', 'InstagramController@getAccountFollowers');
     $router->post('instagram/get-account-followings', 'InstagramController@getAccountFollowings');
 

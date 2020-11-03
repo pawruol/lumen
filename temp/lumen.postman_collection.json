@@ -372,6 +372,36 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "get-account-by-username",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/instagram/get-account-by-username?username=pawruol",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"instagram",
+						"get-account-by-username"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "pawruol"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"protocolProfileBehavior": {}
