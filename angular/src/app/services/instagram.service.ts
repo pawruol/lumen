@@ -29,6 +29,16 @@ export class InstagramService{
     );
   }
 
+  getAccountPostsByUsername(username, count): Observable<any> {
+    let api = `${this.endpoint}/instagram/get-account-posts-by-username`;
+    return this.http.get(api, { headers: this.headers, params: { username: username, count: count } }).pipe(
+      map((res: Response) => {
+        return res || {};
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   // Error
   handleError(error: HttpErrorResponse) {
     let msg = '';

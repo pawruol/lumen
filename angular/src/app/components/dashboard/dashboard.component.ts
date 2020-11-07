@@ -42,7 +42,7 @@ export class DashboardComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddUserAccountComponent, {
-      minWidth: '750px',
+      maxWidth: '750px',
       data: {name: this.name}
     });
 

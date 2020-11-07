@@ -33,6 +33,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('user/accounts/{id}', 'UserController@singleAccount');
     // Matches "/api/user/accounts
     $router->post('user/accounts', 'UserController@storeAccount');
+    // Matches "/api/user/accounts
+    $router->delete('user/accounts/{accountUsername}', 'UserController@deleteAccount');
 
     // Matches "/api/workers
     $router->get('user/workers', 'WorkerController@allWorkers');
@@ -43,6 +45,8 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
     // Matches "/api/instagram
     $router->get('instagram/get-account-by-username', 'InstagramController@getAccountByUsername');
+
+    $router->get('instagram/get-account-posts-by-username', 'InstagramController@getAccountPostsByUsername');
 
     $router->post('instagram/get-account-followers', 'InstagramController@getAccountFollowers');
     $router->post('instagram/get-account-followings', 'InstagramController@getAccountFollowings');

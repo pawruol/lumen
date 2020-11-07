@@ -1,23 +1,88 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <img mat-card-avatar src="{{currentUserInstagram.profile_picture_url}}" alt="">
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{currentUserInstagram.full_name}}</mat-card-title>
-    <mat-card-subtitle>{{currentUserInstagram.biography}}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-   <div class="container">
-    <div class="section">{{currentUserInstagram.number_published_posts + '  публикаций'}}</div>
-    <div class="section">{{currentUserInstagram.number_followers + '  подписчиков'}}</div>
-    <div class="section">{{currentUserInstagram.number_follows + '  подписок'}}</div>
-   </div>
-    <div class="container">
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </div>
-  </mat-card-content>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4" style="padding: 40px;">
+      <mat-card *ngIf="currentUserInstagram" style="margin-bottom: 25px; border: 0;
+    box-shadow: 0 0 black;
+    max-height: 565px;
+    overflow: hidden;">
+        <mat-card-header>
+          <img mat-card-avatar src="{{currentUserInstagram.profile_picture_url}}" alt="">
+          <mat-card-title>{{currentUserInstagram.full_name}}</mat-card-title>
+          <mat-card-subtitle>{{currentUserInstagram.username}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row" style="margin-bottom: 15px;">
+            <div style="text-align: center;" class="col-md-4">
+              <span style="font-weight: bold; display: block;">{{currentUserInstagram.number_published_posts}}</span>публикаций
+            </div>
+            <div style="text-align: center;" class="col-md-4">
+              <span style="font-weight: bold; display: block;">{{currentUserInstagram.number_followers}}</span>подписчиков
+            </div>
+            <div style="text-align: center;" class="col-md-4">
+              <span style="font-weight: bold; display: block;">{{currentUserInstagram.number_follows}}</span>подписок
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h3 style="margin-bottom: 5px;">Дополнительная информация:</h3>
+              <span style="margin-right: 15px;">Биография:</span>{{currentUserInstagram.biography}}<br>
+              <span style="margin-right: 15px;">Веб-сайт:</span>{{currentUserInstagram.external_link}}<br>
+              <span style="margin-right: 15px;">Аккаунт приватный:</span>{{currentUserInstagram.is_private}}<br>
+              <span style="margin-right: 15px;">Аккаунт верифицирован:</span>{{currentUserInstagram.is_verified}}<br>
+            </div>
+          </div>
+          <h3 style="margin-bottom: 5px;margin-top: 15px;">Последние публикации:</h3>
+          <mat-grid-list cols="3" rowHeight="1:1">
+            <mat-grid-tile *ngFor="let post of currentUserLatestPosts">
+              <img style="width: 100%; height: 100%; object-fit: cover;" src="{{post.imageHref}}">
+            </mat-grid-tile>
+          </mat-grid-list>
 
-  <mat-card-footer>
-    <mat-card-subtitle>Контактная информация: {{currentUserInstagram.external_link}}</mat-card-subtitle>
-  </mat-card-footer>
-</mat-card>
+        </mat-card-content>
+      </mat-card>
+      <img src="assets/phone.png" style="
+    position: absolute;
+    left: 25px;
+    top: 30px;
+    z-index: 999;
+    width: 330px;
+    height: 600px;
+">
+    </div>
+    <div class="col-md-8">
+      <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="Аналитика">
+          <div class="container" style="margin-bottom: 25px; padding-top: 25px;">
+            <div class="row">
+              <div class="col-md-12">
+
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="История">
+          <div class="container" style="margin-bottom: 25px; padding-top: 25px;">
+            <div class="row">
+              <div class="col-md-12">
+
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Настройки">
+          <div class="container" style="margin-bottom: 25px; padding-top: 25px;">
+            <div class="row">
+              <div class="col-md-12">
+                <mat-list role="list">
+                  <mat-list-item role="listitem"><button color="warn" (click)="deleteAccount()" mat-button>Удалить аккаунт</button></mat-list-item>
+                  <!--<mat-list-item role="listitem">Item 2</mat-list-item>
+                  <mat-list-item role="listitem">Item 3</mat-list-item>-->
+                </mat-list>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

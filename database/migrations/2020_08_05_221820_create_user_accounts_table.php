@@ -18,8 +18,9 @@ class CreateUserAccountsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('type')->notNullable();
-            $table->string('username')->unique()->notNullable();
+            $table->string('username')->notNullable();
             $table->string('password')->notNullable();
+            $table->boolean('active');
             $table->timestamps();
         });
     }
@@ -32,6 +33,6 @@ class CreateUserAccountsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('user_accounts');
-        
+
     }
 }

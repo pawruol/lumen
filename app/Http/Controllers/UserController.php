@@ -23,7 +23,7 @@ class UserController extends Controller
     /**
      * Get the authenticated User.
      *
-     * @return Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function profile()
     {
@@ -33,11 +33,11 @@ class UserController extends Controller
     /**
      * Get all User Accounts.
      *
-     * @return Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function allAccounts()
     {
-         return response()->json(['data' =>  User::find(Auth::id())->userAccounts, 'code' => 1], 200);
+         return response()->json(['data' =>  User::find(Auth::id())->userAccounts()->where('active', true)->get(), 'code' => 1], 200);
     }
 
     /**
@@ -50,7 +50,8 @@ class UserController extends Controller
         try {
             $userAccount = UserAccount::where([
                 ['user_id', '=', Auth::id()],
-                ['id', '=', $id]
+                ['id', '=', $id],
+                ['active', '=', true]
             ])->firstOrFail();;
 
             return response()->json(['data' => $userAccount, 'code' => 1], 200);
@@ -83,6 +84,7 @@ class UserController extends Controller
             $userAccount->type = $request->input('type');
             $userAccount->password = $request->input('password');
             $userAccount->user_id = Auth::id();
+            $userAccount->active = true;
             $userAccount->save();
 
             //return successful response
@@ -90,6 +92,32 @@ class UserController extends Controller
         } catch (\Exception $e) {
             //return error message
             return response()->json(['message' => 'User account store failed!', 'code' => 0], 409);
+        }
+
+    }
+
+    /**
+     * Delete a user account.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function deleteAccount($accountUsername)
+    {
+        try {
+            $userAccount = UserAccount::where([
+                ['user_id', '=', Auth::id()],
+                ['username', '=', $accountUsername]
+            ])->firstOrFail();
+
+            $userAccount->active = false;
+            $userAccount->save();
+
+            //return successful response
+            return response()->json(['message' => 'User account delete successful', 'code' => 1], 200);
+        } catch (\Exception $e) {
+            //return error message
+            return response()->json(['message' => 'User account delete failed!', 'code' => 0], 409);
         }
 
     }

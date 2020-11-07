@@ -10,7 +10,7 @@
     </div>
     <div class="col-md-6">
       <mat-form-field appearance="fill" class="full-width-field">
-        <mat-label>Enter your password</mat-label>
+        <mat-label>Ваш пароль</mat-label>
         <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -35,6 +35,6 @@
   </div>
 </div>
 <div mat-dialog-actions align="end">
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button cdkFocusInitial (click)="submitDialog()">Submit</button>
+  <button mat-button (click)="onNoClick()">Отмена</button>
+  <button mat-button cdkFocusInitial (click)="submitDialog()">Подтвердить</button>
 </div>

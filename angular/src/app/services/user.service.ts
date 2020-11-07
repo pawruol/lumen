@@ -40,6 +40,16 @@ export class UserService {
     );
   }
 
+  deleteAccount(accountUsername): Observable<any> {
+    let api = `${this.endpoint}/user/accounts/` + accountUsername;
+    return this.http.delete(api).pipe(
+      map((res: Response) => {
+        return res || {};
+      }),
+      catchError(this.handleError)
+    );
+  }
+
   // Error
   handleError(error: HttpErrorResponse) {
     let msg = '';

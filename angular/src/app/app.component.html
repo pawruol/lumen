@@ -3,15 +3,20 @@
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <span>OUTGRAM</span>
+
+  <span style="margin-right: 25px;">OUTGRAM</span>
+
+  <span class="nav-tool-items">
+    <a *ngIf="this.authService.isLoggedIn" mat-button routerLink="dashboard">Панель управления</a>
+    <a *ngIf="this.authService.isLoggedIn" mat-button routerLink="scrapper">Сбор данных</a>
+  </span>
 
   <span class="example-spacer"></span>
 
   <span class="nav-tool-items">
-    <a *ngIf="!this.authService.isLoggedIn" mat-button routerLink="login" routerLinkActive="active">Log in</a>
-    <a *ngIf="!this.authService.isLoggedIn" style="margin-left: 8px" mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
-    <a *ngIf="this.authService.isLoggedIn" mat-button routerLink="dashboard" routerLinkActive="active">Dashboard</a>
-    <a (click)="logout()" *ngIf="this.authService.isLoggedIn" style="margin-left: 8px" mat-button mat-raised-button routerLinkActive="active">Logout</a>
+    <a *ngIf="!this.authService.isLoggedIn" mat-button routerLink="login">Log in</a>
+    <a *ngIf="!this.authService.isLoggedIn" style="margin-left: 8px" mat-button mat-raised-button routerLink="register">Register</a>
+    <a (click)="logout()" *ngIf="this.authService.isLoggedIn" style="margin-left: 8px" mat-button mat-raised-button>Logout</a>
   </span>
 
   <!--<button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">

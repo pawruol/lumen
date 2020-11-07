@@ -1,41 +1,28 @@
 <div class="container">
   <div class="row">
-    <div *ngIf="this.currentUser" class="inner-main">
-      <h2 class="mb-4">User Profile</h2>
-      <p><strong>Name:</strong> {{this.currentUser.name}}</p>
-      <p><strong>Email:</strong> {{this.currentUser.email}}</p>
-
+    <div class="col-md-12">
+      <div *ngIf="this.currentUser" class="inner-main">
+        <h1>Добро пожаловать, {{this.currentUser.name}}</h1>
+        <p>Для продолжения выберите один из ваших аккаунтов или добавьте новый.</p>
+      </div>
     </div>
   </div>
   <div class="row">
-    <mat-card [value]="account" *ngFor="let account of currentUserAccounts" class="col-md-4">
-      <mat-card-header>
-        <mat-card-title>{{account.username}}</mat-card-title>
-        <mat-card-subtitle>{{account.type}}</mat-card-subtitle>
-      </mat-card-header>
-      <mat-card-content>
-        <p>{{account.username}}</p>
-        <p>{{account.password}}</p>
-        <p>{{account.created_at}}</p>
-      </mat-card-content>
-      <mat-card-actions align="end">
-        <button type="submit" mat-raised-button  routerLink="/account/{{account.username}}" routerLinkActive="active">Change</button>
-      </mat-card-actions>
-    </mat-card>
+    <div class="col-md-12">
+      <button mat-raised-button (click)="openDialog()" color="primary"><mat-icon aria-hidden="false" aria-label="Add new">add</mat-icon> Добавить новый</button>
+    </div>
   </div>
-
-  <div class="row">
-    <ol>
-<!--      <li>-->
-<!--        <mat-form-field>-->
-<!--          <mat-label>What's your name?</mat-label>-->
-<!--          <input matInput [(ngModel)]="name">-->
-<!--        </mat-form-field>-->
-<!--      </li>-->
-      <li>
-        <button mat-raised-button (click)="openDialog()">Pick one</button>
-      </li>
-    </ol>
+  <div class="row" style="margin-top: 25px;">
+    <div class="col-md-12">
+      <h2>Список ваших аккаунтов</h2>
+    </div>
+    <div *ngFor="let account of currentUserAccounts" class="col-md-3">
+      <mat-card matRipple routerLink="/account/{{account.username}}" class="card-account">
+        <mat-card-header>
+          <mat-card-title>{{account.username}}</mat-card-title>
+          <mat-card-subtitle>{{account.type}}</mat-card-subtitle>
+        </mat-card-header>
+      </mat-card>
+    </div>
   </div>
-
 </div>
