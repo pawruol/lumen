@@ -12,14 +12,12 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {AuthInterceptor} from './interceptors/auth.interceptor';
-
 import {AppComponent} from './app.component';
 import {LogInComponent} from './components/log-in/log-in.component';
 import {RegisterComponent} from './components/register/register.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import { DialogAddUserAccountComponent } from './components/dialogs/dialog-add-user-account/dialog-add-user-account.component';
 import { AccountComponent } from './components/account/account.component';
-
 
 
 

@@ -19,6 +19,7 @@ export class InstagramService{
   }
 
 /// getAccountByUsername
+
   getAccountByUsername(username): Observable<any> {
     let api = `${this.endpoint}/instagram/get-account-by-username`;
     return this.http.get(api, { headers: this.headers, params: { username: username } }).pipe(

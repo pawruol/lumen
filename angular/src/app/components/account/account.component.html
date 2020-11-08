@@ -64,7 +64,31 @@
           <div class="container" style="margin-bottom: 25px; padding-top: 25px;">
             <div class="row">
               <div class="col-md-12">
+                <mat-table class="workers-table mat-elevation-z8" [dataSource]="accountWorkers">
 
+                  <ng-container matColumnDef="user_account_id">
+                    <mat-header-cell *matHeaderCellDef>User Account</mat-header-cell>
+                    <mat-cell *matCellDef="let worker">{{worker.user_account_id}}</mat-cell>
+                  </ng-container>
+
+                  <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+                    <mat-cell class="description-cell"
+                              *matCellDef="let worker">{{worker.description}}</mat-cell>
+
+                  </ng-container>
+
+                  <ng-container matColumnDef="duration">
+                    <mat-header-cell *matHeaderCellDef>Duration</mat-header-cell>
+                    <mat-cell class="duration-cell"
+                              *matCellDef="let worker">{{worker.duration}}</mat-cell>
+                  </ng-container>
+
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+                  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+                </mat-table>
               </div>
             </div>
           </div>
