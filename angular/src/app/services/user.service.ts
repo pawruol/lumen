@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {Observable, throwError} from 'rxjs';
+import {catchError, map} from 'rxjs/operators';
+import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +20,19 @@ export class UserService {
   }
 
 
+  getAllUserAccountWorkers(): Observable<any> {
+    let api = `${this.endpoint}/user/workers`;
+    return this.http.get(api, {headers: this.headers}).pipe(
+      map((res: Response) => {
+        return res || {}
+      }),
+      catchError(this.handleError)
+    )
+  }
+
   getUserAccounts(): Observable<any> {
     let api = `${this.endpoint}/user/accounts`;
-    return this.http.get(api, { headers: this.headers }).pipe(
+    return this.http.get(api, {headers: this.headers}).pipe(
       map((res: Response) => {
         return res || {};
       }),
@@ -32,7 +42,11 @@ export class UserService {
 
   addUserAccount(userAccountCredentials): Observable<any> {
     let api = `${this.endpoint}/user/accounts`;
-    return this.http.post(api, {username: userAccountCredentials.username, password: userAccountCredentials.password, type: 'instagram'},{ headers: this.headers }).pipe(
+    return this.http.post(api, {
+      username: userAccountCredentials.username,
+      password: userAccountCredentials.password,
+      type: 'instagram'
+    }, {headers: this.headers}).pipe(
       map((res: Response) => {
         return res || {};
       }),

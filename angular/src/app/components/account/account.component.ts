@@ -5,6 +5,7 @@ import { UserService } from '../../services/user.service';
 
 import {Observable} from "rxjs";
 import {InstagramAccount} from "../../models/instagram-account";
+import {UsersWorker} from "../../models/users-worker";
 
 @Component({
   selector: 'app-account',
@@ -16,6 +17,8 @@ export class AccountComponent implements OnInit {
   currentUserInstagram: InstagramAccount;
   currentUserLatestPosts;
   accountUsername = 'initial value';
+  accountWorkers: UsersWorker[];
+  accountWorker: UsersWorker;
 
 
   constructor(private route: ActivatedRoute,
@@ -45,5 +48,10 @@ export class AccountComponent implements OnInit {
       this.router.navigate(['dashboard']);
     });
   }
+  getAllUserWorkers(){
+    this.userService.getAllUserAccountWorkers().subscribe(res => {
+      this.accountWorkers = res.data;
+    })
 
+  }
 }
