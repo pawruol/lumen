@@ -38,9 +38,13 @@ class InstagramController extends Controller
 
         $accountUsername = $request->username;
 
+
         // If account is public you can query Instagram without auth
         $instagram = new \InstagramScraper\Instagram(new \GuzzleHttp\Client());
         $account = $instagram->getAccount($accountUsername);
+
+
+
 
         return response()->json(['data' => [
                 'id' => $account->getId(),

@@ -16,6 +16,9 @@ $router->get('/', function () use ($router) {
     //return view('index');
 });
 
+$router->get('parse', 'ExampleController@parse');
+$router->get('masslike', 'ExampleController@masslike');
+
 // API route group
 $router->group(['prefix' => 'api'], function () use ($router) {
 
